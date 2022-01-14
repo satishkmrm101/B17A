@@ -1,0 +1,40 @@
+<nav class="navbar navbar-dark">
+    <button mat-button class="leftsidemenu" [routerLink]='["/"]'>
+      <mat-icon>book</mat-icon>Book cart
+    </button>
+  
+    <div class="mediaQbookcart">
+      <app-searchinput></app-searchinput>
+    </div>
+  
+    <div>
+      <button mat-button *ngIf="login" class="mediaQhideshopingicon" [routerLinkActive]='["link-active"]'
+        [routerLink]='["/wishlist"]'>
+        <mat-icon matBadge={{wishlistcount}} matBadgeColor="warn">favorite</mat-icon>
+      </button>
+  
+      <button mat-button class="mediaQhideshopingicon" [routerLinkActive]='["link-active"]' [routerLink]='["/cartitems"]'>
+        <mat-icon matBadge={{cartcount}} matBadgeColor="warn">shopping_cart</mat-icon>
+      </button>
+  
+      <button mat-button *ngIf="!login" [routerLinkActive]='["link-active"]' [routerLink]='["/login"]'
+        (click)=logout()>Login</button>
+  
+      <button mat-button *ngIf="login"  [matMenuTriggerFor]="menu">
+        <mat-icon>account_circle</mat-icon>Satish
+      </button>
+  
+      <mat-menu #menu="matMenu">
+        <button style="background-color: white; color: black;" mat-menu-item [routerLink]='["/myorders"]'>My
+          Orders</button>
+        <button style="background-color: white;color: black;" mat-menu-item [routerLinkActive]='["link-active"]' [routerLink]='["/login"]' (click)=loginS()>Logout</button>
+      </mat-menu>
+  
+  
+      <button mat-button class="mediaQhidecoloricon">
+        <mat-icon> format_color_fill</mat-icon>
+      </button>
+  
+      <button mat-button class="mediaQhideswagger"><img height="25px" src="assets/download.png">Swagger</button>
+    </div>
+  </nav>
